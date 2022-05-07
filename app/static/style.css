@@ -3,3 +3,10 @@
     width: 14%;
     justify-content: space-evenly;
 }
+.about{
+    margin: 20px;
+    padding-top: 30px;
+}
+#abouttitle{
+    padding-bottom: 20px;
+}
