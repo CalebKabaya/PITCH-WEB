@@ -1,10 +1,14 @@
 from . import main
-from flask_login import login_required
 from flask import render_template,request,redirect,url_for,abort
 from ..models import  User
 from .forms import UpdateProfile
 from .. import db,photos
-from werkzeug.utils import secure_filename
+
+from flask_login import login_required,current_user
+# from ..models import User,Pitch,Comment,Upvote,Downvote
+from ..models import User,Pitch
+from .forms import UpdateProfile,PitchForm
+# from .forms import UpdateProfile,PitchForm,CommentForm
 
 @main.route('/')
 def index():
@@ -53,3 +57,19 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+
+@main.route('/create_new', methods = ['POST','GET'])
+@login_required
+def new_pitch():
+    form = PitchForm()
+    if form.validate_on_submit():
+        title = form.title.data
+        post = form.post.data
+        category = form.category.data
+        user_id = current_user
+        new_pitch_object = Pitch(post=post,user_id=current_user._get_current_object().id,category=category,title=title)
+        new_pitch_object.save_p()
+        return redirect(url_for('main.index'))
+        
+    return render_template('create_pitch.html', form = form)    
