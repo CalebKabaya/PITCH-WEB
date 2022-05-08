@@ -4,12 +4,15 @@
     justify-content: space-evenly;
 }
 .about{
-    margin: 20px;
-    padding-top: 20px;
+    margin: 15px;
+    padding-top: 15px;
     font-size: 18px;
 }
 #abouttitle{
     padding-bottom: 20px;
+    font-size: 29px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 #btns{
@@ -40,4 +43,16 @@
     color: white;
     padding-bottom: 10%;
     margin: 0 20%;
+}
+.sighup{
+    font-size: 20px;
+    font-weight: bolder;
+   
+}
+#descript{
+    font-size: 18px;
+}
+.fa {
+    color: rgb(255, 42, 0);
+    margin: 0 2%;
 }
