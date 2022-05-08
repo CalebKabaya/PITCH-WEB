@@ -10,14 +10,24 @@ from ..models import User,Pitch
 from .forms import UpdateProfile,PitchForm
 # from .forms import UpdateProfile,PitchForm,CommentForm
 
+# @main.route('/')
+# def index():
+#     """
+#     View root page function that returns the index page and its data
+
+#     """
+
+#     return render_template('index.html')
+
 @main.route('/')
 def index():
-    """
-    View root page function that returns the index page and its data
+    pitches = Pitch.query.all()
+    interview = Pitch.query.filter_by(category = 'Interview').all() 
+    product = Pitch.query.filter_by(category = 'Product').all()
+    promotion = Pitch.query.filter_by(category = 'promotion').all()
 
-    """
+    return render_template('index.html', interview = interview,product = product, pitches = pitches,promotion= promotion)
 
-    return render_template('index.html')
 
 @main.route('/user/<uname>')
 def profile(uname):
