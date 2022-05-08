@@ -21,33 +21,58 @@ class Config:
     MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
     MAIL_PASSWORD= os.environ.get("MAIL_PASSWORD")
 
+
+
+class ProdConfig(Config):
+    """
+    Production configuration child class
+    Args:
+        Config: The parent configuration class with General
+        configuration settings
+    """
+    # pass
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    
+
+class DevConfig(Config):
+    """
+    Development configuration child class
+    Args:
+        Config: The parent configuration class with General
+        configuration settings
+    """
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+
+    # DATABASE_PASSWORD = os.environ.get("DATABASE_PASSWORD")
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    DEBUG = True
 class TestConfig(Config):
     # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/watchlist_test'
 
     pass
 
-class ProdConfig(Config):
-    '''
-    Production  configuration child class
-    Args:
-        Config: The parent configuration class with General configuration settings
-    '''
+# class ProdConfig(Config):
+#     '''
+#     Production  configuration child class
+#     Args:
+#         Config: The parent configuration class with General configuration settings
+#     '''
     # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/watchlist'
     # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-    pass
+    # pass
 
 
     
 
 
-class DevConfig(Config):
-    '''
-    Development  configuration child class
-    Args:
-        Config: The parent configuration class with General configuration settings
-    '''
+# class DevConfig(Config):
+#     '''
+#     Development  configuration child class
+#     Args:
+#         Config: The parent configuration class with General configuration settings
+#     '''
 
-    DEBUG = True
+#     DEBUG = True
 
 config_options = {
 'development':DevConfig,
