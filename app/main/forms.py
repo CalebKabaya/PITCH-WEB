@@ -17,3 +17,10 @@ class PitchForm(FlaskForm):
 class CommentForm(FlaskForm):
     comment = TextAreaField('Leave a comment',validators=[DataRequired()])
     submit = SubmitField('Comment')    
+
+class UpvoteForm(FlaskForm):
+    submit = SubmitField()
+
+
+class Downvote(FlaskForm):
+    submit = SubmitField()
