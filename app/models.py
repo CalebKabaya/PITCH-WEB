@@ -16,9 +16,9 @@ class User(UserMixin,db.Model):
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
     pitches = db.relationship('Pitch', backref='user', lazy='dynamic')
-    comment = db.relationship('Comment', backref='user', lazy='dynamic')
-    upvote = db.relationship('Upvote',backref='user',lazy='dynamic')
-    downvote = db.relationship('Downvote',backref='user',lazy='dynamic')
+    # comment = db.relationship('Comment', backref='user', lazy='dynamic')
+    # upvote = db.relationship('Upvote',backref='user',lazy='dynamic')
+    # downvote = db.relationship('Downvote',backref='user',lazy='dynamic')
     @property
     def password(self):
         raise AttributeError('You cannot read the password attribute')
@@ -30,7 +30,14 @@ class User(UserMixin,db.Model):
 
     def verify_password(self,password):
         return check_password_hash(self.pass_secure,password)
+    
+    def save_u(self):
+        db.session.add(self)
+        db.session.commit()
 
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
 
     def __repr__(self):
         return f'User{self.username}'
@@ -46,9 +53,9 @@ class Pitch(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(255),nullable = False)
     post = db.Column(db.Text(), nullable = False)
-    comment = db.relationship('Comment',backref='pitch',lazy='dynamic')
-    upvote = db.relationship('Upvote',backref='pitch',lazy='dynamic')
-    downvote = db.relationship('Downvote',backref='pitch',lazy='dynamic')
+    # comment = db.relationship('Comment',backref='pitch',lazy='dynamic')
+    # upvote = db.relationship('Upvote',backref='pitch',lazy='dynamic')
+    # downvote = db.relationship('Downvote',backref='pitch',lazy='dynamic')
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     time = db.Column(db.DateTime, default = datetime.utcnow)
     category = db.Column(db.String(255), index = True,nullable = False)
