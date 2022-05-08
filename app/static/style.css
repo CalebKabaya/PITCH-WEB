@@ -22,3 +22,22 @@
    background-color: rgb(255, 255, 255);
    color: rgb(0, 0, 0); 
 }
+#fortext{
+    font-size: 20px;
+    font-weight: bolder;
+}
+#addbtn{
+    background-color: black;
+    color: white;
+}
+#addbtn:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+#pitchadd{
+    border-style: outset;
+    background-color: rgb(2, 54, 73);
+    color: white;
+    padding-bottom: 10%;
+    margin: 0 20%;
+}
