@@ -1,12 +1,4 @@
 import os
-from dotenv import load_dotenv
-load_dotenv()
-# import re
-
-# uri = os.getenv("DATABASE_URL")  # or other relevant config var
-# if uri.startswith("postgres://"):
-#     uri = uri.replace("postgres://", "postgresql://", 1)
-# # rest of connection code using the connection string `uri`
 
 class Config:
     '''
@@ -37,13 +29,12 @@ class TestConfig(Config):
 class ProdConfig(Config):
     '''
     Production  configuration child class
-
     Args:
         Config: The parent configuration class with General configuration settings
     '''
     # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/watchlist'
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-    
+    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    pass
 
 
     
@@ -52,7 +43,6 @@ class ProdConfig(Config):
 class DevConfig(Config):
     '''
     Development  configuration child class
-
     Args:
         Config: The parent configuration class with General configuration settings
     '''
