@@ -8,7 +8,7 @@ class Config():
    '''
    SECRET_KEY=os.environ.get('SECRET_KEY')
    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/pitches'
-   SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+   # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
    UPLOADED_PHOTOS_DEST ='app/static/photos'
    #simple mde configuration
