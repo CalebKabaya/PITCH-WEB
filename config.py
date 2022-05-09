@@ -1,17 +1,13 @@
 import os
 
-
-DATABASE_URL = os.environ['DATABASE_URL']
-
 class Config:
 
 
    '''
    General configuration parent class
    '''
-   DATABASE_URL = os.environ['DATABASE_URL']
    SECRET_KEY=os.environ.get('SECRET_KEY')
-#    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/pitches'
+   SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/pitches'
    UPLOADED_PHOTOS_DEST ='app/static/photos'
    #simple mde configuration
    # SIMPLEMDE_JS_IIFE = True
@@ -42,11 +38,10 @@ class ProdConfig(Config):
    Args:
        Config: The parent configuration class with General configuration settings
    '''
-   # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/watchlist'
    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-   DATABASE_URL = os.environ['DATABASE_URL']
 
-   pass
+   # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/watchlist'
+   # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 class DevConfig(Config):
 
@@ -68,3 +63,4 @@ config_options = {
 'production':ProdConfig,
 'test':TestConfig
 }
+
