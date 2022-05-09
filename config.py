@@ -1,21 +1,14 @@
 import os
-from dotenv import load_dotenv
-import os
-load_dotenv()
-
-class Config():
+# from dotenv import load_dotenv
+# load_dotenv()
+class Config:
 
 
    '''
    General configuration parent class
    '''
-   SECRET_KEY = os.getenv('SECRET_KEY')
-   SQLALCHEMY_DATABASE_URI = os.getenv('SQLALCHEMY_DATABASE_URI')
-
-   # SECRET_KEY=os.environ.get('SECRET_KEY')
+   SECRET_KEY=os.environ.get('SECRET_KEY')
    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/pitches'
-   # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-
    UPLOADED_PHOTOS_DEST ='app/static/photos'
    #simple mde configuration
    # SIMPLEMDE_JS_IIFE = True
@@ -47,10 +40,10 @@ class ProdConfig(Config):
        Config: The parent configuration class with General configuration settings
    '''
    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/watchlist'
-   # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-   SECRET_KEY = os.getenv('SECRET_KEY')
-   SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
-
+   # SECRET_KEY = os.getenv('SECRET_KEY')
+   # SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
+   SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+   
 
 class DevConfig(Config):
 
