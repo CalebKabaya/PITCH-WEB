@@ -42,7 +42,10 @@ class ProdConfig(Config):
    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/watchlist'
    # SECRET_KEY = os.getenv('SECRET_KEY')
    # SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
-   SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+   # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+   # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
+   SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1) or 'sqlite:///myDB.db'
+
    
 
 class DevConfig(Config):
