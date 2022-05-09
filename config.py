@@ -1,6 +1,6 @@
 import os
 
-class Config:
+class Config():
 
 
    '''
@@ -40,8 +40,7 @@ class ProdConfig(Config):
    '''
    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/watchlist'
    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-   DATABASE_URL = os.environ['DATABASE_URL']
-
+   pass
 
 class DevConfig(Config):
 
