@@ -5,6 +5,8 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_uploads import UploadSet,configure_uploads,IMAGES
 from flask_mail import Mail
+# from flaskqna import routes
+
 
 
 
@@ -15,6 +17,7 @@ login_manager.login_view = 'auth.login'
 db = SQLAlchemy()
 photos = UploadSet('photos',IMAGES)
 mail = Mail()
+
 
 
 
@@ -36,9 +39,18 @@ def create_app(config_name):
     configure_uploads(app,photos)
 
 
-
   
+    # ENV = 'dev'
 
+    # if ENV == 'dev':
+    #   app.debug = True
+    #   app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:123456@localhost:5433/flaskqna'
+
+    # else:
+    #   app.debug = False
+    #   app.config['SQLALCHEMY_DATABASE_URI'] = ''
+
+    # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
      
     # Registering the blueprint
     from .main import main as main_blueprint
