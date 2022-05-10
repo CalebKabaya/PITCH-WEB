@@ -1,18 +1,17 @@
 import os
-# from dotenv import load_dotenv
-# load_dotenv()
+
 class Config:
 
 
    '''
    General configuration parent class
    '''
+   SQLALCHEMY_TRACK_MODIFICATIONS = False
    SECRET_KEY=os.environ.get('SECRET_KEY')
-   # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/pitches'
    UPLOADED_PHOTOS_DEST ='app/static/photos'
-   #simple mde configuration
-   # SIMPLEMDE_JS_IIFE = True
-   # SIMPLEMDE_USE_CDN = True
+   # simple mde configuration
+   SIMPLEMDE_JS_IIFE = True
+   SIMPLEMDE_USE_CDN = True
 
    #mail cconfiguration
 
@@ -40,13 +39,8 @@ class ProdConfig(Config):
        Config: The parent configuration class with General configuration settings
    '''
    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/watchlist'
-   # SECRET_KEY = os.getenv('SECRET_KEY')
-   # SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-   # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1)
-   SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("://", "ql://", 1) or 'sqlite:///myDB.db'
-
-   
+   pass
 
 class DevConfig(Config):
 
@@ -57,6 +51,7 @@ class DevConfig(Config):
        Config: The parent configuration class with General configuration settings
 
    '''
+   SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Mbuguack@localhost/pitches'
    DEBUG = True
 
 
